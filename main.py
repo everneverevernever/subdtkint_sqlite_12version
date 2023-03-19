@@ -5,7 +5,7 @@ import table2 as table2
 from sqlite3 import *
 from openpyxl import Workbook, load_workbook
 
-
+# Получение информации из первой таблицы в бд
 def information():
     with connect('database\database.db') as db:
         cursor = db.cursor()
@@ -15,8 +15,8 @@ def information():
 
 # функция добавления новых записей
 def form_submit():
-    name = f_name.get()
-    expenses = f_expenses.get()
+    name = f_name.get() #Entry имя
+    expenses = f_expenses.get() #Entry платеж
     insert_inf = (name, expenses)
     with connect('database\database.db') as db:
         cursor = db.cursor()
@@ -24,9 +24,6 @@ def form_submit():
         cursor.execute(query, insert_inf)
         db.commit()
         refresh()
-
-
-# функция добавления новых записей
 
 
 # функция обновления таблицы1
@@ -382,7 +379,7 @@ mainmenu.add_cascade(label="Выгрузка из бд",
 frombd_menu.add_command(label='В Excel', command=db_to_excel)
 
 # Добавление кнопки "Изменить Имя" в контекстное меню / пока не работает
-mainmenu.add_command(label='Изменить Имя (не работает)', command=menu_change_name)
+#mainmenu.add_command(label='Изменить Имя (не работает)', command=menu_change_name)
 
 
 # добавления новых имен в бд
